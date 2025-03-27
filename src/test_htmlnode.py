@@ -8,11 +8,11 @@ class TestHTMLNode(unittest.TestCase):
             "div",
             "Hello, world!",
             None,
-            {"class": "greeting", "href": "https://boot.dev"},
+            {"class": "greeting", "href": "https://www.hildebrandt.club"},
         )
         self.assertEqual(
             node.props_to_html(),
-            ' class="greeting" href="https://boot.dev"',
+            ' class="greeting" href="https://www.hildebrandt.club',
         )
 
     def test_values(self):
@@ -63,6 +63,7 @@ class TestHTMLNode(unittest.TestCase):
     def test_leaf_to_html_no_tag(self):
         node = LeafNode(None, "Hello, world!")
         self.assertEqual(node.to_html(), "Hello, world!")
+
     def test_to_html_with_children(self):
         child_node = LeafNode("span", "child")
         parent_node = ParentNode("div", [child_node])
@@ -106,5 +107,7 @@ class TestHTMLNode(unittest.TestCase):
             node.to_html(),
             "<h2><b>Bold text</b>Normal text<i>italic text</i>Normal text</h2>",
         )
+
+
 if __name__ == "__main__":
     unittest.main()
